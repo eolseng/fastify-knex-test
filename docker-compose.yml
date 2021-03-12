@@ -1,0 +1,33 @@
+services:
+  app:
+    image: node:14.16.0-alpine
+    command: "npm run dev"
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      PORT: 8000
+      DATABASE_URL: 'postgresql://postgres:postgres@db:5432/postgres'
+#    depends_on:
+#      - db
+#    networks:
+#      - db-network
+#
+#  db:
+#    image: library/postgres:13
+#    ports:
+#      - 5432:5432
+#    volumes:
+#      - /var/lib/postgresql/data
+#    environment:
+#      POSTGRES_DB: postgres
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: postgres
+#    networks:
+#      - db-network
+#
+#networks:
+#  db-network:
+#    driver: bridge
